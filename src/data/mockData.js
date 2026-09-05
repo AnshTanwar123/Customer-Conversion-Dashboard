@@ -4,10 +4,10 @@ const cardLogoOptions = ['Visa', 'Mastercard', 'Amex', 'RuPay'];
 const sourceOptions = ['WhatsApp', 'SMS', 'Email', 'IVR'];
 
 const funnelTargets = [
-  { channel: 'Email', sent: 915, delivered: 760, landed: 560, booked: 373 },
-  { channel: 'IVR', sent: 842, delivered: 690, landed: 470, booked: 358 },
-  { channel: 'WhatsApp', sent: 857, delivered: 710, landed: 510, booked: 347 },
-  { channel: 'SMS', sent: 843, delivered: 670, landed: 440, booked: 327 },
+  { channel: 'Email', sent: 3800, delivered: 3420, landed: 342, booked: 86 },
+  { channel: 'IVR', sent: 3800, delivered: 3420, landed: 342, booked: 86 },
+  { channel: 'WhatsApp', sent: 3800, delivered: 3420, landed: 342, booked: 85 },
+  { channel: 'SMS', sent: 3800, delivered: 3420, landed: 342, booked: 85 },
 ];
 
 const seededRandom = (seed) => {
