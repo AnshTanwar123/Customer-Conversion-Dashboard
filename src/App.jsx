@@ -170,11 +170,10 @@ function App() {
   const summary = calculateSummary(dashboardData.file_alloc);
   const sourceRows = sourceBreakdown();
   const channelRows = channelPerformance();
-  const vintageCounts = dashboardData.file_alloc.reduce((acc, item) => {
-    acc[item.vintage] = (acc[item.vintage] || 0) + 1;
-    return acc;
-  }, {});
-  const topVintage = Object.entries(vintageCounts).sort((a, b) => b[1] - a[1])[0];
+  const bestConversionSegments = segmentGroups.map((group) => ({
+    title: group.title.replace(' wise performance', ''),
+    row: [...group.rows].sort((a, b) => b.conversionRate - a.conversionRate)[0],
+  }));
 
   const scoreCards = [
     { label: 'Customers', value: summary.totalCustomers, delta: '+12.4%', tone: 'blue' },
@@ -309,24 +308,13 @@ function App() {
   const renderAudience = () => (
     <div className="tab-section">
       <div className="info-grid">
-        <div className="info-card">
-          <span>High propensity audience</span>
-          <strong>{formatNumber(dashboardData.file_alloc.filter((row) => row.Propensity === 'Very High').length)}</strong>
-        </div>
-        <div className="info-card">
-          <span>Top vintage segment</span>
-          <strong>
-            {topVintage ? `${topVintage[0]} (${formatNumber(topVintage[1])})` : 'N/A'}
-          </strong>
-        </div>
-        <div className="info-card">
-          <span>ELA active customers</span>
-          <strong>{formatNumber(dashboardData.file_alloc.filter((row) => row.ELA === 'Yes').length)}</strong>
-        </div>
-        <div className="info-card">
-          <span>Avg credit limit</span>
-          <strong>{formatCurrency(dashboardData.file_alloc.reduce((sum, row) => sum + row.credit_limit, 0) / dashboardData.file_alloc.length)}</strong>
-        </div>
+        {bestConversionSegments.map(({ title, row }) => (
+          <div className="info-card" key={title}>
+            <span>Best {title} conversion</span>
+            <strong>{row ? `${row.label} · ${row.conversionRate.toFixed(1)}%` : 'N/A'}</strong>
+            {row && <small>{formatNumber(row.booked)} booked from {formatNumber(row.customers)} customers</small>}
+          </div>
+        ))}
       </div>
 
       <div className="segment-grid">
