@@ -2,6 +2,10 @@
 
 A React dashboard for customer funnel analytics, built around a synthetic 16k-row dataset that mirrors the structure of:
 
+## Live Demo
+
+[Open the Customer Conversion Dashboard](https://customer-conversion-dashboard.vercel.app/)
+
 - `file_alloc` table: customer-level campaign allocation data
 - `land_table`: customers who landed via WhatsApp / SMS / Email / IVR
 - `booking_table`: customers with booked loans and booking amounts
