@@ -23,5 +23,3 @@ A React dashboard for customer funnel analytics, built around a synthetic 16k-ro
 npm install
 npm run dev
 ```
-
-Then open the Vite app in the browser (typically http://localhost:5173).
