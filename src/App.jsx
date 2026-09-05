@@ -354,18 +354,22 @@ function App() {
 
   const renderCampaigns = () => (
     <div className="tab-section">
-      <div className="info-grid three-col">
+      <div className="info-grid four-col">
         <div className="info-card">
-          <span>Campaign sent</span>
-          <strong>{formatNumber(summary.sent)}</strong>
+          <span>Sent %</span>
+          <strong>{((summary.sent / summary.totalCustomers) * 100).toFixed(1)}%</strong>
         </div>
         <div className="info-card">
-          <span>Campaign delivered</span>
-          <strong>{formatNumber(summary.delivered)}</strong>
-        </div>
-        <div className="info-card">
-          <span>Delivery rate</span>
+          <span>Delivered %</span>
           <strong>{summary.deliveryRate.toFixed(1)}%</strong>
+        </div>
+        <div className="info-card">
+          <span>Landed %</span>
+          <strong>{summary.landRate.toFixed(1)}%</strong>
+        </div>
+        <div className="info-card">
+          <span>Booked %</span>
+          <strong>{summary.bookingRate.toFixed(1)}%</strong>
         </div>
       </div>
 
